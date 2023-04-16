@@ -1,0 +1,45 @@
+.card-background {
+  background: rgba(29, 29, 29, 0.5);
+  border: 1px solid #2e2e2e;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input {
+  background-color: #0E0E0E;
+  border-radius: 5px;
+  border: none;
+  color: #ADB5BD;
+  text-align: center;
+
+}
+
+.search {
+  font-size: 13px;
+  color: gray;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/Search_icon.svg');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 20px;
+  background-position-x: 15px;
+}
+
+.arrow {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+}
+
+.bg-green {
+  background-color: #14F195;
+}
+
+.text-green {
+  color: #14F195;
+}
+
+.card-scrolleable {
+  overflow-y: scroll;
+  max-height: 40vh;
+  overflow-x: hidden;
+}
