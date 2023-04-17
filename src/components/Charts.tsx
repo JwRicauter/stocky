@@ -1,5 +1,10 @@
+/* react */
 import { useEffect, useState } from 'react';
+
+/* services */
 import { getCandles } from '../services/api';
+
+/* third part libraries */
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer 
 } from 'recharts';
@@ -13,9 +18,16 @@ type Props = {
 
 export const Charts = ({dateRange, priceType, selectedSymbols} : Props) => {
 
+
   const [chartsData, setChartsData] = useState<any[]>([]);
 
-
+  /** 
+  * Function that return an array of days 
+  *
+  * @param s Start date 
+  * @param e End date
+  * @return a Array of days between s and e (inclusive)
+  */
   const getDaysArray = (s,e) => {
     let a : any[]; let d : Date;
     for( a=[],d=new Date(s);d<=new Date(e);d.setDate(d.getDate()+1)){ 
@@ -25,6 +37,14 @@ export const Charts = ({dateRange, priceType, selectedSymbols} : Props) => {
     return a;
   }
 
+  /**
+   * Helper that translate the api information into an arrray readable for
+   * the chart library
+   * 
+   * @param data API information about the Stocks symbols
+   * @param symbols Array of symbols
+   * @param priceType Price type to filter
+  */
   const prepareChart = (data, symbols, priceType) => {
     let code = {
       'Open Prices': 'o',
@@ -78,9 +98,6 @@ export const Charts = ({dateRange, priceType, selectedSymbols} : Props) => {
     };
 
   }, [dateRange, selectedSymbols])
-
-
- 
 
 
   return(

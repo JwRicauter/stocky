@@ -1,10 +1,11 @@
+/* react */
 import { useState, useEffect } from 'react';
+
+/* bootstrap components */
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
-import DatePicker from "react-datepicker";
-import { getSymbols } from '../services/api';
+
+/* internal components */
 import { Inputs } from '../components/Inputs';
 import { Symbols } from '../components/Symbols';
 import { Charts } from '../components/Charts';

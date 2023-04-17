@@ -1,9 +1,18 @@
+/* Global card style */
 .card-background {
   background: rgba(29, 29, 29, 0.5);
   border: 1px solid #2e2e2e;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.card-scrolleable {
+  overflow-y: scroll;
+  max-height: 40vh;
+  overflow-x: hidden;
+}
+
+
+/* Input */
 .input {
   background-color: #0E0E0E;
   border-radius: 5px;
@@ -13,6 +22,8 @@
 
 }
 
+
+/* Input icons */
 .search {
   font-size: 13px;
   color: gray;
@@ -30,16 +41,3 @@
   background-position-y: 5px;
 }
 
-.bg-green {
-  background-color: #14F195;
-}
-
-.text-green {
-  color: #14F195;
-}
-
-.card-scrolleable {
-  overflow-y: scroll;
-  max-height: 40vh;
-  overflow-x: hidden;
-}

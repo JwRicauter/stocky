@@ -5,11 +5,13 @@ body {
   overflow-x: hidden;
 }
 
+/* forms */
 .form-check-input:checked {
   background-color: #14F195;
   border-color: #14F195;
 }
 
+/* lists */
 ul {
   display: flex;
   list-style-type: none;

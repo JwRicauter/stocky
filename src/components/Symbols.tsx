@@ -1,9 +1,16 @@
+/* react */
 import { useState, useEffect } from 'react';
+
+/* bootstrap components */
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
+
+/* services */
 import { getSymbols } from '../services/api';
+
+/* third part libraries */
 import ReactPaginate from 'react-paginate';
 
 type Props = {
@@ -25,6 +32,39 @@ export const Symbols = ({selectedSymbols, setSelectedSymbols} : Props) => {
   const [textSearch, setTextSearch] = useState<string>('')
 
 
+  /**
+   * Pagination handler
+   * 
+   * @param event Synthetic event of new page click
+   */
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % filteredSymbols.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+
+
+  /**
+   * Function that manage the symbols array state
+   * 
+   * @param event Synthetic event of checkbox toggle
+   */
+  const toggleCheckbox = (event) => {
+
+    let symbol = event.target.id;
+    if (selectedSymbols.includes(symbol)) {
+      let array = selectedSymbols.filter(item => item !== symbol)
+      setSelectedSymbols(array);
+    } else if (!selectedSymbols.includes(symbol) && selectedSymbols.length < 3) {
+      let array = Object.assign([], selectedSymbols); 
+      array.push(symbol)
+      setSelectedSymbols(array)
+    }
+
+  }
+
 
   useEffect(() => {
     
@@ -42,13 +82,16 @@ export const Symbols = ({selectedSymbols, setSelectedSymbols} : Props) => {
 
   }, [textSearch]);
 
+
   useEffect(() => {
     setEndOffset(itemOffset + itemsPerPage)
   }, [itemOffset]);
 
+
   useEffect(() => {
     setCurrentItems(filteredSymbols.slice(itemOffset, endOffset))
   }, [itemOffset, endOffset]);
+
 
   useEffect(() => {
     const controller = new AbortController();
@@ -66,28 +109,6 @@ export const Symbols = ({selectedSymbols, setSelectedSymbols} : Props) => {
     };
   }, []);
 
-  // Invoke when user click to request another page.
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % filteredSymbols.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
-    setItemOffset(newOffset);
-  };
-
-  const toggleCheckbox = (event) => {
-
-    let symbol = event.target.id;
-    if (selectedSymbols.includes(symbol)) {
-      let array = selectedSymbols.filter(item => item !== symbol)
-      setSelectedSymbols(array);
-    } else if (!selectedSymbols.includes(symbol) && selectedSymbols.length < 3) {
-      let array = Object.assign([], selectedSymbols); 
-      array.push(symbol)
-      setSelectedSymbols(array)
-    }
-
-  }
 
     
   return (
