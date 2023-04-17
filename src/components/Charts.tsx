@@ -20,7 +20,7 @@ export const Charts = ({dateRange, priceType, selectedSymbols} : Props) => {
 
 
   const [chartsData, setChartsData] = useState<any[]>([]);
-
+  const colors = ['#da1013', '#110d54', '#ccf664']
   /** 
   * Function that return an array of days 
   *
@@ -97,11 +97,11 @@ export const Charts = ({dateRange, priceType, selectedSymbols} : Props) => {
       controller.abort();
     };
 
-  }, [dateRange, selectedSymbols])
+  }, [dateRange, priceType, selectedSymbols])
 
 
   return(
-    chartsData.length > 0 ? <ResponsiveContainer width="100%" height="70%" className='mt-5'>
+    chartsData.length > 0 ? <ResponsiveContainer data-testid='chart' width="100%" height="70%" className='mt-5'>
       <LineChart
         width={500}
         height={300}
@@ -120,10 +120,8 @@ export const Charts = ({dateRange, priceType, selectedSymbols} : Props) => {
         <Legend />
         {
           selectedSymbols.map( (d, index) => {
-
             return (
-
-              <Line type="monotone" dataKey={d} stroke="#8884d8" activeDot={{ r: 8 }} />
+              <Line type="monotone" key={index} dataKey={d} stroke={colors[index]} activeDot={{ r: 8 }} />
             )
           })
         }

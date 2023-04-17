@@ -49,11 +49,11 @@ export const Inputs = ({dateRange, setDateRange, priceType, setPriceType}: Props
             </p>
           </Col>
           <Col xs={9}>
-            <Form.Select onChange={e => setPriceType(e.target.value)} className='input arrow'>
-              <option>Open Prices</option>
-              <option>High Prices</option>
-              <option>Low Prices</option>
-              <option>Close Prices</option>
+            <Form.Select data-testid="select" id='select' onChange={e => setPriceType(e.target.value)} className='input arrow'>
+              <option data-testid="select-option">Open Prices</option>
+              <option data-testid="select-option">High Prices</option>
+              <option data-testid="select-option">Low Prices</option>
+              <option data-testid="select-option">Close Prices</option>
             </Form.Select>
             
           </Col>

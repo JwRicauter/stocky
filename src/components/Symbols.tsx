@@ -116,6 +116,7 @@ export const Symbols = ({selectedSymbols, setSelectedSymbols} : Props) => {
       <Card.Body>
         <Form.Control 
           type="text" 
+          data-testid="filter-symbols"
           placeholder="Normal text" 
           className='input search mb-4'
           onChange={ e => { setTextSearch(e.target.value) }}
@@ -123,9 +124,10 @@ export const Symbols = ({selectedSymbols, setSelectedSymbols} : Props) => {
         
         <div className='card-scrolleable'>
           {
+            currentItems.length > 0 ?
             currentItems.map( (symbol, index) => {
               return(
-                <Row key={index} className='pb-1 mb-3 border-bottom border-dark'>
+                <Row key={index} data-testid="symbols" className='pb-1 mb-3 border-bottom border-dark'>
                   
                   <Col xs={10}>
                     <small className='text-white'>
@@ -148,7 +150,7 @@ export const Symbols = ({selectedSymbols, setSelectedSymbols} : Props) => {
                   </Col>
                 </Row>
               )
-            })
+            }) : <p>Loading</p>
           }
           <ReactPaginate
             breakLabel="..."
